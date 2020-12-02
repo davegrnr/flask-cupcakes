@@ -1,5 +1,8 @@
 const BASE_URL = "http://localhost:5000/api";
 
+$( document ).ready(function() {
+    console.log( "ready!" );
+});
 
 /** given data about a cupcake, generate html */
 
@@ -22,7 +25,7 @@ function generateCupcakeHTML(cupcake) {
 
 async function showInitialCupcakes() {
   const response = await axios.get(`${BASE_URL}/cupcakes`);
-
+    console.log(response)
   for (let cupcakeData of response.data.cupcakes) {
     let newCupcake = $(generateCupcakeHTML(cupcakeData));
     $("#cupcakes-list").append(newCupcake);
@@ -51,3 +54,5 @@ $("#new-cupcake-form").on("submit", async function (evt) {
   $("#cupcakes-list").append(newCupcake);
   $("#new-cupcake-form").trigger("reset");
 });
+
+$(showInitialCupcakes);
