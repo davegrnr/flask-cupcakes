@@ -1,8 +1,9 @@
 from app import app
+from flask import Flask
 from models import db, Cupcake
 
 
-db.drop_all()
+# db.drop_all()
 db.create_all()
 
 c1 = Cupcake(
